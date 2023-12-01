@@ -26,13 +26,19 @@ $(function () {
     });
 
     $('.form-navigation .end').click(function(){
-        Swal.fire(
-            'Gracias por Participar',
-            'Te invitamos a seguir usando nuestra app',
-            'success'
-            ).then((result) => {
-                window.location.href = '/';
-              });
+        $.ajax({
+            type: "get",
+            url: "/questions/finishQuestions",
+            success: function (response) {
+                Swal.fire(
+                    'Gracias por Participar',
+                    'Te invitamos a seguir usando nuestra app',
+                    'success'
+                    ).then((result) => {
+                        window.location.href = '/questions/index';
+                      });     
+            }
+        });
     })
 
     $('.reto').click(function(){

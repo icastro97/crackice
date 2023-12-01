@@ -8,6 +8,11 @@
     <title>Crackice</title>
     @vite(['resources/sass/app.scss' ,'resources/js/app.js'])
 </head>
+<style>
+  body{
+    background-color: #BFF9FF;
+  }
+</style>
 <body>
 
 

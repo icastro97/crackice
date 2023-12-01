@@ -74,4 +74,11 @@ class QuestionsController extends Controller
 
         return "exito";
     }
+
+    function finishQuestions() {
+        Session::forget('categoria_seleccionada');
+        Session::forget('nivel_selecionado');
+        return "exito";
+
+    }
 }

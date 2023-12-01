@@ -43,6 +43,7 @@ Route::middleware(['verificarCodigo'])->prefix('questions')->controller(Question
      Route::post('/setLevel', 'setLevel');
      Route::get('/questions', 'questions');
      Route::get('/getChallenge', 'getRandomChallenge');
+     Route::get('/finishQuestions', 'finishQuestions');
 
 
 });
