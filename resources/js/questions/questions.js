@@ -36,7 +36,7 @@ $(function () {
                     'success'
                     ).then((result) => {
                         window.location.href = '/questions/index';
-                      });     
+                      });
             }
         });
     })

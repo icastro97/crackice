@@ -1,6 +1,8 @@
 import 'bootstrap';
 import jQuery from 'jquery';
 import swal from 'sweetalert2';
+import './bootstrap';
+import 'laravel-datatables-vite';
 
 window.Swal = swal;
 window.$ = jQuery;
@@ -26,7 +28,7 @@ $(document).ready(function () {
                     $('#products-container').append(`
                     <div class="col">
                     <div class="card mb-3" style="max-width: 18rem;">
-                        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                        <img src="/storage/${product.image}" class="card-img-top" alt="${product.name}">
                         <div class="card-body">
                             <h5 class="card-title">${product.name}</h5>
                             <p class="card-text">${product.price}</p>

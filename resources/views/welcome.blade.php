@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Crackice</title>
-    @vite(['resources/sass/app.scss','resources/css/app.css' ,'resources/js/app.js','resources/js/welcome.js'])
+    @vite(['resources/css/app.css','resources/css/welcome.css' ,'resources/js/app.js','resources/js/welcome.js'])
 </head>
 <body>
     <div class="title">
@@ -16,7 +16,7 @@
         </center>
         <img src="{{ asset('images/crackice.jpeg') }}" alt="Imagen de encabezado" class="header-image">
     </div>
-
+    
     <div class="form-container">
         <h2 class="mb-4">Ingrese el código de 4 dígitos</h2>
         <div class="form-group">

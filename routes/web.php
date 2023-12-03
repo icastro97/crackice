@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -44,6 +46,20 @@ Route::middleware(['verificarCodigo'])->prefix('questions')->controller(Question
      Route::get('/questions', 'questions');
      Route::get('/getChallenge', 'getRandomChallenge');
      Route::get('/finishQuestions', 'finishQuestions');
-
-
 });
+
+
+Route::prefix('admin')->middleware('auth')->controller(AdminController::class)->group(function(){
+    Route::get('/dashboard', 'index');
+    Route::prefix('products')->controller(AdminProductController::class)->group(function(){
+        Route::get('/allProducts', 'index');
+        Route::post('/addProduct', 'addProduct')->name('product-add');
+        Route::post('/deleteProducts', 'delete')->name('product-delete');
+
+
+    });
+});
+
+Auth::routes();
+
+Route::get('/dashboard', [HomeController::class, 'dash'])->name('home')->middleware('auth');
