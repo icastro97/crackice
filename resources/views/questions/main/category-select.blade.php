@@ -3,7 +3,7 @@
 @section('content')
     @vite(['resources/js/questions/categories.js', 'resources/css/questions/categories.css'])
 
-    @if (Cart::count() > 2)
+    @if (Cart::count() >= 2)
     <div class="container mt-5">
         <div class="text-center">
           <h2>Categorías</h2>

@@ -52,17 +52,15 @@ class QuestionsController extends Controller
 
                     if ($nivelSeleccionado == ($nivelSuperado + 1)) {
 
-                        $timestamp = Session::get('cart_updated_at');
-                        $tiempoPasado = now()->diffInMinutes($timestamp);
 
-                        if ($tiempoPasado < 5) {
+                        if (Cart::count() >= 4) {
                             Session::put('nivel_seleccionado', $nivelSeleccionado);
                             return "nivel seleccionado";
                         }
                         else {
                             return "nivel bloqueado";
                         }
-                        
+
 
                     }
                     else{
