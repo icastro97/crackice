@@ -27,12 +27,13 @@ body {
 
 .form-group {
     display: flex;
-    flex-direction: column; /* Cambia la dirección del diseño a columna para dispositivos más pequeños */
     margin-bottom: 20px;
 }
 
 input {
-    margin-bottom: 10px; /* Espaciado entre los inputs */
+    width: calc(25% - 10px); /* Adjusted width of the inputs */
+    margin-bottom: 10px;
+    padding: 8px; /* Added padding for better appearance */
 }
 
 button {
@@ -53,14 +54,14 @@ button {
     margin-left: 30px;
 }
 
-/* Media Query para pantallas más pequeñas */
+/* Media Query for smaller screens */
 @media only screen and (max-width: 600px) {
     .form-container {
-        width: 90%; /* Reduzca aún más el ancho del formulario para pantallas más pequeñas si es necesario */
+        width: 90%;
     }
 
     input {
-        width: calc(25% - 5px); /* Ajusta el ancho de los inputs para asegurarte de que se ajusten dentro del contenedor */
-        margin-bottom: 10px; /* Espaciado entre los inputs */
+        width: calc(25% - 5px);
+        margin-bottom: 10px;
     }
 }
