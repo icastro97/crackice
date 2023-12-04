@@ -43,14 +43,17 @@ class QuestionsController extends Controller
         try {
             $nivelSeleccionado = $request->level;
             $nivelSuperado = Session::get('nivel_superado');
+
             if (empty($nivelSuperado)) {
                 $nivelSuperado = 0;
             }
 
             if ($nivelSeleccionado != 1 && Cart::count() > 1) {
                     if ($nivelSeleccionado == ($nivelSuperado + 1)) {
-                        Session::put('nivel_seleccionado', $nivelSeleccionado);
-                        return "nivel seleccionado";
+                        if (Cart::contentChanged()) {
+                            Session::put('nivel_seleccionado', $nivelSeleccionado);
+                            return "nivel seleccionado";
+                        }
 
                     }
                     else{
