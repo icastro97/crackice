@@ -38,11 +38,11 @@ $(document).ready(function () {
 
                   </div>`);
 
-                  $('.add-to-cart').click(function () {
-                    var productId = $(this).data('id');
-                    addProductToCart(productId);
                 });
-                });
+                $('.add-to-cart').click(function () {
+                  var productId = $(this).data('id');
+                  addProductToCart(productId);
+              });
             },
             error: function (error) {
                 console.error('Error al obtener productos:', error);

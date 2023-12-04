@@ -15,24 +15,29 @@
 </style>
 <body>
 
-
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img src="{{ asset('images/crackice.jpeg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-              Crackice
-            </a>
+          <a class="navbar-brand" href="/questions/index">
+            <img src="{{ asset('images/crackice.jpeg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Crackice
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn btn-outline-success me-2" aria-current="page" href="#" id="openPopup" data-bs-toggle="modal" data-bs-target="#exampleModal">Tienda</a>
+            </li>
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" id="openPopup" data-bs-toggle="modal" data-bs-target="#exampleModal">Tienda</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('cart.checkout')}}">Ver Carrito <span class="badge badge-danger">{{Cart::count()}}</span></a>
-                  </li>
-                </ul>
+              <li class="nav-item d-flex">
+                <a class="nav-link"href="{{route('cart.checkout')}}">Ver Carrito <span class="badge badge-danger">{{Cart::count()}}</span></a>
+              </li>
+            </ul>
           </div>
+        </div>
       </nav>
+
 
     </div>
 
