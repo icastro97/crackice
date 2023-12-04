@@ -50,14 +50,9 @@ class QuestionsController extends Controller
 
             if ($nivelSeleccionado != 1 && Cart::count() > 1) {
                     if ($nivelSeleccionado == ($nivelSuperado + 1)) {
+                        Session::put('nivel_seleccionado', $nivelSeleccionado);
+                        return "nivel seleccionado";
 
-                        if (Cart::hasChanged()) {
-                            Session::put('nivel_seleccionado', $nivelSeleccionado);
-                            return "nivel seleccionado";
-                        }
-                        else{
-                            return "nivel bloqueado";
-                        }
                     }
                     else{
                         return "nivel bloqueado";
