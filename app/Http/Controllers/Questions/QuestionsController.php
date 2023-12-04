@@ -49,9 +49,20 @@ class QuestionsController extends Controller
             }
 
             if ($nivelSeleccionado != 1 && Cart::count() > 1) {
+
                     if ($nivelSeleccionado == ($nivelSuperado + 1)) {
-                        Session::put('nivel_seleccionado', $nivelSeleccionado);
-                        return "nivel seleccionado";
+
+                        $timestamp = Session::get('cart_updated_at');
+                        $tiempoPasado = now()->diffInMinutes($timestamp);
+
+                        if ($tiempoPasado < 5) {
+                            Session::put('nivel_seleccionado', $nivelSeleccionado);
+                            return "nivel seleccionado";
+                        }
+                        else {
+                            return "nivel bloqueado";
+                        }
+                        
 
                     }
                     else{

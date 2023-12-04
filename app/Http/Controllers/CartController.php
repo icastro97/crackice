@@ -16,7 +16,7 @@ class CartController extends Controller
         $codigo = Session::get('codigo_ingresado');
 
         FacadesCart::add($producto->id, $producto->name, 1, $producto->price,['image' => $producto->image]);
-
+        Session::put('cart_updated_at', now());
 
         return "success";
 
