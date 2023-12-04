@@ -22,6 +22,10 @@ class QuestionsController extends Controller
 
     function setCategory(Request $request) {
         try {
+            $nivelSuperado = Session::get('nivel_superado');
+            if($nivelSuperado && $nivelSuperado > 2){
+                Session::forget('nivel_superado');
+            }
             Session::put('categoria_seleccionada', $request->category);
             return "categoria Seleccionada";
 
@@ -37,10 +41,23 @@ class QuestionsController extends Controller
 
     function setLevel(Request $request) {
         try {
-            if ($request->level != 1 && Cart::count() < 1) {
-                return "nivel bloqueado";
+            $nivelSeleccionado = $request->level;
+            $nivelSuperado = Session::get('nivel_superado');
+            if (empty($nivelSuperado)) {
+                $nivelSuperado = 0;
             }
-            Session::put('nivel_selecionado', $request->level);
+
+            if ($nivelSeleccionado != 1 && Cart::count() > 1) {
+                    if ($nivelSeleccionado == ($nivelSuperado + 1)) {
+                        Session::put('nivel_seleccionado', $nivelSeleccionado);
+                        return "nivel seleccionado";
+
+                    }
+                    else{
+                        return "nivel bloqueado";
+                    }
+            }
+            Session::put('nivel_seleccionado', $nivelSeleccionado);
             return "nivel seleccionado";
 
         } catch (\Throwable $th) {
@@ -50,7 +67,7 @@ class QuestionsController extends Controller
 
     function questions() {
         $categoria = Session::get('categoria_seleccionada');
-        $nivel = Session::get('nivel_selecionado');
+        $nivel = Session::get('nivel_seleccionado');
 
         $preguntas = Question::where('id_level', $nivel)->where('id_category', $categoria)->inRandomOrder()->take(10)->get();
 
@@ -76,8 +93,17 @@ class QuestionsController extends Controller
     }
 
     function finishQuestions() {
+        $nivel = Session::get('nivel_seleccionado');
         Session::forget('categoria_seleccionada');
-        Session::forget('nivel_selecionado');
+        Session::forget('nivel_seleccionado');
+        if (Session::get('nivel_superado')) {
+            Session::forget('nivel_superado');
+            Session::put('nivel_superado', $nivel);
+        }
+        else {
+            Session::put('nivel_superado', $nivel);
+        }
+
         return "exito";
 
     }

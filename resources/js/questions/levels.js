@@ -17,13 +17,14 @@
             'X-CSRF-TOKEN': csrfToken
         },
         success: function (response) {
+            console.log(response);
             if (response == 'nivel seleccionado') {
                 window.location.href = "/questions/questions";
             }
             else if(response == 'nivel bloqueado'){
                 Swal.fire(
                     'Atencion',
-                    'Debes Comprar un producto para acceder a este nivel :(',
+                    'Debes Comprar un producto y haber superado el nivel anterior para acceder a este nivel :(',
                     'info'
                 )
             }
