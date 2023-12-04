@@ -50,12 +50,8 @@ class QuestionsController extends Controller
 
             if ($nivelSeleccionado != 1 && Cart::count() > 1) {
                     if ($nivelSeleccionado == ($nivelSuperado + 1)) {
-                        // Obtener una copia del carrito actual
-                        $currentCart = Cart::get();
 
-                        // Obtener una copia del carrito que tenía la última vez
-                        $previousCart = Cart::get(true);
-                        if ($currentCart != $previousCart) {
+                        if (Cart::hasChanged()) {
                             Session::put('nivel_seleccionado', $nivelSeleccionado);
                             return "nivel seleccionado";
                         }
